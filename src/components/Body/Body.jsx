@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GalleryList from "../GalleryList/GalleryList"
+import axios from "axios";
 
 function Body(props) {
     // const [name, setName]=useState(null);
+
+    useEffect(() => {
+        console.log('loaded');
+        axios.get('/gallery').then((response) => {
+            console.log(response);
+        }).catch((err) => {
+            console.log(err);
+        })
+    });
 
     const [images, setImages] = useState([
         { id: 1, path: 'images/goat_small.jpg', description: 'Photo of a goat taken at Glacier National Park.', likes: 0 },
