@@ -9,6 +9,7 @@ function GalleryList(props) {
             {/* <p>props: {JSON.stringify(props)}</p> */}
             <p>
                 {
+                    // map through items and send them + getItems function via props
                     props.taco.map((taco) =>
                         (<GalleryItem galleryItem={taco} getItems={props.get} />))
                 }
