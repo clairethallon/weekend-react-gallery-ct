@@ -28,21 +28,6 @@ function GalleryItem(props) {
 
     }
 
-    // const deleteItem = () => {
-    //     if (confirm('do you want to delete?')) {
-
-    //         axios.delete(`/gallery/delete/${imageItem.id}`, imageItem).then((response) => {
-    //             console.log('deleted');
-    //             props.getItems();
-    //         }).catch((err) => {
-    //             console.log(err);
-    //         })
-    //     }
-    //     else {
-    //         alert('not deleted');
-    //     }
-    // }
-
     // function to toggle the image item display
     const changeImageDisplay = () => {
         setImageDisplay(!imageDisplay); // when clicked, toggle boolean to whatever imageDisplay is not
@@ -63,7 +48,7 @@ function GalleryItem(props) {
 
                 {/* if the like button is clicked, run galleryLikes */}
                 <div>
-                    <button class="btn btn-light" onClick={galleryLikes}>{imageItem.likes}  &#9825; </button>
+                    <button class="btn btn-light" onClick={galleryLikes}>{imageItem.likes}  &#9825;</button>
                     {/* <button onClick={deleteItem}>delete</button> */}
                 </div>
                 <br />
