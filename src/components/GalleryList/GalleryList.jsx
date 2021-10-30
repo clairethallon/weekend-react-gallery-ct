@@ -10,7 +10,7 @@ function GalleryList(props) {
             <p>
                 {
                     props.taco.map((taco) =>
-                        (<GalleryItem galleryItem={taco} galleryItemlikes={itemFromGallery => { props.likes(itemFromGallery) }} />))
+                        (<GalleryItem galleryItem={taco} getItems={props.get} />))
                 }
             </p>
 

@@ -15,12 +15,12 @@
   font-size: 1.5em;
 }
 img {
-  height: 100px;
-  width: auto;
+  width: 200px;
+  height: auto;
+  border-radius: 10%;
 }
 
 .imageBlocks{
-  background-color: cadetblue;
   display: inline-block;
   flex-wrap: wrap;
 
