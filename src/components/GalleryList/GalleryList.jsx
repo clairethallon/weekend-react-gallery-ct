@@ -6,11 +6,11 @@ function GalleryList(props) {
 
     return (
         <div>
-            <h1>Gallery List</h1>
-            {/* <p>props: {JSON.stringify(props)}</p> */}
+            <p>props: {JSON.stringify(props)}</p>
             <p>
                 {
-                    props.taco.map((taco) => (<GalleryItem galleryItem={taco} />))
+                    props.taco.map((taco) =>
+                        (<GalleryItem galleryItem={taco} galleryItemlikes={(itemFromGallery) => { props.likes(itemFromGallery) }} />))
                 }
             </p>
 
