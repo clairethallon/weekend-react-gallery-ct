@@ -5,7 +5,7 @@ function GalleryList(props) {
     // const [name, setName]=useState(null);
 
     return (
-        <div>
+        <div class="d-flex justify-content-evenly flex-wrap">
             {/* <p>props: {JSON.stringify(props)}</p> */}
             <p>
                 {

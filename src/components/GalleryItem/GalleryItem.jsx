@@ -49,19 +49,25 @@ function GalleryItem(props) {
         console.log(imageDisplay);
     }
 
+
     return (
-        <div>
+        <div >
             {/* <p>props: {JSON.stringify(props)}</p> */}
 
             {/* if ImageDispay = true, display image, if false, display alt text */}
-            {imageDisplay ?
-                <img onClick={changeImageDisplay} src={imageItem.path} /> :
-                <p onClick={changeImageDisplay} > {imageItem.description}</p>}
-            <span>
+            <div>
+                {imageDisplay ?
+
+                    <img class=" img-fluid rounded " onClick={changeImageDisplay} src={imageItem.path} /> :
+                    <p onClick={changeImageDisplay} > {imageItem.description}</p>}
+
                 {/* if the like button is clicked, run galleryLikes */}
-                <p onClick={galleryLikes}>{imageItem.likes}  &#9825; </p>
-                {/* <button onClick={deleteItem}>delete</button> */}
-            </span>
+                <div>
+                    <button class="btn btn-light" onClick={galleryLikes}>{imageItem.likes}  &#9825; </button>
+                    {/* <button onClick={deleteItem}>delete</button> */}
+                </div>
+                <br />
+            </div>
 
         </div >
     )

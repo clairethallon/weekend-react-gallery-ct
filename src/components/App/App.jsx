@@ -30,10 +30,10 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Gallery of My Life</h1>
       </header>
-      <span class="imageBlocks" >
+      <div>
         {/* pass down items and getitems function via props */}
         <GalleryList taco={items} get={getItems} />
-      </span>
+      </div>
     </div>
   );
 }
