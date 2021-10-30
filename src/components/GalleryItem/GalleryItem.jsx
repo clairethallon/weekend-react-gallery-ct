@@ -3,11 +3,19 @@ import { useState } from "react";
 function GalleryItem(props) {
     // const [name, setName]=useState(null);
     const [imageDisplay, setImageDisplay] = useState(true);
-    const [likes, setLikes] = useState(0);
+    const [imageItem, setImageItem] = useState({
+        id: props.galleryItem.id,
+        path: props.galleryItem.path,
+        description: props.galleryItem.description,
+        likes: props.galleryItem.likes
+    });
+
 
     const galleryLikes = () => {
-        setLikes(likes + 1);
-        props.galleryItemlikes(likes);
+        setImageItem(
+            { ...imageItem, likes: ++imageItem.likes }
+        )
+        console.log(imageItem.likes);
 
     }
 
@@ -19,12 +27,13 @@ function GalleryItem(props) {
     return (
         <div>
             <h1> Gallery Item: {props.galleryItem.id}</h1>
-            <p>props: {JSON.stringify(props)}</p>
-            { imageDisplay ?
-                <img onClick={changeImageDisplay} src={props.galleryItem.path} /> :
-                <p onClick={changeImageDisplay} > {props.galleryItem.description}</p>}
-            <p onClick={galleryLikes}>likes: {likes}</p>
-        </div>
+            {/* <p>props: {JSON.stringify(props)}</p> */}
+            {imageDisplay ?
+                <img onClick={changeImageDisplay} src={imageItem.path} /> :
+                <p onClick={changeImageDisplay} > {imageItem.description}</p>}
+            <p onClick={galleryLikes}>likes: {imageItem.likes}</p>
+
+        </div >
     )
 
 

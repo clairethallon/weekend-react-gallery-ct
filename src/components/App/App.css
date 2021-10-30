@@ -8,12 +8,21 @@
   color: white;
   margin-bottom: 1em;
 }
-
+.App {
+  background-color: rgb(224, 214, 183);
+}
 .App-title {
   font-size: 1.5em;
 }
 img {
   height: 100px;
   width: auto;
+}
+
+.imageBlocks{
+  background-color: cadetblue;
+  display: inline-block;
+  flex-wrap: wrap;
+
 }
 

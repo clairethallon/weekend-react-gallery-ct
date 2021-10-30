@@ -25,7 +25,6 @@ function App() {
   }
 
   const updateLikes = (itemLikes) => {
-    console.log('setLikes', likes);
     setLikes(itemLikes);
     console.log('updated likes', likes);
     // axios.put('/gallery').then((response) => {
@@ -41,7 +40,9 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Gallery of My Life</h1>
       </header>
-      <GalleryList taco={items} likes={(itemFromGallery) => { updateLikes(itemFromGallery) }} />
+      <span class="imageBlocks" >
+        <GalleryList taco={items} likes={itemFromGallery => { updateLikes(itemFromGallery) }} />
+      </span>
     </div>
   );
 }
