@@ -9,7 +9,7 @@ const pool = require('../modules/pool');
 // PUT Route
 router.put('/like/:id', (req, res) => {
     console.log(req.params);
-    let queryString = `UPDATE "gallery_items" SET likes ='${req.body.likes}' WHERE id=${req.params.id};`;
+    let queryString = `UPDATE "gallery_items" SET likes ='${req.body.likes + 1}' WHERE id=${req.params.id};`;
     pool.query(queryString).then((results) => {
         res.sendStatus(200);
     }).catch((results) => {

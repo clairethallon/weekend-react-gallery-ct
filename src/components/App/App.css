@@ -14,6 +14,7 @@
 .App {
   background-color: rgb(241, 241, 236);
   font-family: 'Courier New', Courier, monospace;
+  text-align: center;
 }
 .App-title {
   font-size: 1.5em;
@@ -27,10 +28,13 @@ img {
 
 .imageBlocks{
   display: inline-block;
-  /* flex-wrap: wrap; */
 
 }
 button{
   margin-right: 125px;
+}
+.input-group-text{
+  text-align: center;
+
 }
 
