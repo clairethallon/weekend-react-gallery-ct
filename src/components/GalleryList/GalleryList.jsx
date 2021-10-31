@@ -5,13 +5,13 @@ function GalleryList(props) {
     // const [name, setName]=useState(null);
 
     return (
-        <div class="d-flex justify-content-evenly flex-wrap">
+        <div >
             {/* <p>props: {JSON.stringify(props)}</p> */}
             <p>
                 {
                     // map through items and send them + getItems function via props
-                    props.taco.map((taco) =>
-                        (<GalleryItem galleryItem={taco} getItems={props.get} />))
+                    props.taco.map((item) =>
+                        (<GalleryItem galleryItem={item} getItems={props.get} />))
                 }
             </p>
 
