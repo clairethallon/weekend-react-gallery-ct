@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const galleryItems = require('../modules/gallery.data');
+// const galleryItems = require('../modules/gallery.data');
+
+// modules
+const pool = require('../modules/pool');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
@@ -16,20 +19,26 @@ router.put('/like/:id', (req, res) => {
     res.sendStatus(200);
 }); // END PUT Route
 
-// DELETE Route
-router.delete('/delete/:id', (req, res) => {
-    const queryString = `DELETE FROM galleryItems WHERE id='${req.params.id}';`;
-    pool.query(queryString).then((results) => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        console.log(error);
-        res.sendStatus(500);
-    })
-}); // END DELETE Route
+// // DELETE Route
+// router.delete('/delete/:id', (req, res) => {
+//     const queryString = `DELETE FROM galleryItems WHERE id='${req.params.id}';`;
+//     pool.query(queryString).then((results) => {
+//         res.sendStatus(200);
+//     }).catch((error) => {
+//         console.log(error);
+//         res.sendStatus(500);
+//     })
+// }); // END DELETE Route
 
 // GET Route
 router.get('/', (req, res) => {
-    res.send(galleryItems);
+    const queryString = 'SELECT * FROM gallery_items ORDER BY id DESC';
+    pool.query(queryString).then((results) => {
+        res.send(results.rows);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    })
 }); // END GET Route
 
 module.exports = router;
