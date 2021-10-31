@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { useState, useEffect } from "react";
 import GalleryList from "../GalleryList/GalleryList"
+import Form from "../Form/Form"
 import axios from "axios";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       </header>
       <div>
         {/* pass down items and getitems function via props */}
+        <Form />
         <GalleryList taco={items} get={getItems} />
       </div>
     </div>
