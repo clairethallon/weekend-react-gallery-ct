@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     let queryString = 'INSERT INTO "gallery_items" (path, description, likes) VALUES($1, $2, $3)';
     let values = [req.body.path, req.body.description, req.body.likes];
     pool.query(queryString, values).then((results) => {
-        res.sendStatus(200);
+        res.sendStatus(201);
     }).catch((results) => {
         console.log('error in PUT');
         res.sendStatus(500);
@@ -32,16 +32,17 @@ router.post('/', (req, res) => {
 });// END PUT Route
 
 
-// // DELETE Route
-// router.delete('/delete/:id', (req, res) => {
-//     const queryString = `DELETE FROM galleryItems WHERE id='${req.params.id}';`;
-//     pool.query(queryString).then((results) => {
-//         res.sendStatus(200);
-//     }).catch((error) => {
-//         console.log(error);
-//         res.sendStatus(500);
-//     })
-// }); // END DELETE Route
+// DELETE Route
+router.delete('/delete/:id', (req, res) => {
+    console.log(req.params);
+    const queryString = `DELETE FROM "gallery_items" WHERE id='${req.params.id}';`;
+    pool.query(queryString).then((results) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    })
+}); // END DELETE Route
 
 // GET Route
 router.get('/', (req, res) => {

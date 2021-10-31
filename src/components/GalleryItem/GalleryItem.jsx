@@ -34,6 +34,17 @@ function GalleryItem(props) {
         console.log(imageDisplay);
     }
 
+    const deleteItem = () => {
+        console.log('in deleteItem');
+        axios.delete(`/gallery/delete/${imageItem.id}`, imageItem).then((response) => {
+            console.log(response);
+            props.getItems();
+        }).catch((err) => {
+            console.log(err);
+        })
+
+    }
+
 
     return (
         <div >
@@ -48,8 +59,10 @@ function GalleryItem(props) {
 
                 {/* if the like button is clicked, run galleryLikes */}
                 <div>
-                    <button class="btn btn-light" onClick={galleryLikes}>{imageItem.likes}  &#9825;</button>
-                    {/* <button onClick={deleteItem}>delete</button> */}
+
+                    <button class="btn btn-light float-left" onClick={galleryLikes}>{imageItem.likes}  &#9825;</button>
+                    <i class="fa fa-trash-o text-right" onClick={deleteItem}></i>
+
                 </div>
                 <br />
             </div>

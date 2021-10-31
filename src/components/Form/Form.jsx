@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function Form(props) {
+    console.log(props);
     // const [name, setName]=useState(null);
     const [newImage, setNewImage] = useState({
         path: '',
@@ -25,16 +26,17 @@ function Form(props) {
     const handleSubmit = () => {
         console.log(newImage);
         axios.post(`/gallery`, newImage).then((response) => {
-            console.log(response);
-            props.getItems();
+            console.log('post successful', response);
+            console.log(props.get());
         }).catch((err) => {
             console.log(err);
         })
+
     }
+
 
     return (
         <div>
-            <h1>Form</h1>
             <span Class="input-group-text" id="addon-wrapping">
                 <input type="text" placeholder="image URL" onChange={(event) => handlePathChange(event)} />
                 <input type="text" placeholder="alt-text" onChange={(event) => handleDescriptionChange(event)} />
