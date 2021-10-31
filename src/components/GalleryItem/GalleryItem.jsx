@@ -5,21 +5,11 @@ function GalleryItem(props) {
     // const [name, setName]=useState(null);
 
     const [imageDisplay, setImageDisplay] = useState(true); // for toggle between image/alt text
-    // create object for ImageItem --> set useState to props.galleryItem.ATTRIBUTE
-    const [imageItem, setImageItem] = useState({
-        id: props.galleryItem.id,
-        path: props.galleryItem.path,
-        description: props.galleryItem.description,
-        likes: props.galleryItem.likes
-    });
 
     const galleryLikes = () => {
-        // update imageItem.likes object when like button is clicked
-        setImageItem(
-            { ...imageItem, likes: ++imageItem.likes }
-        )
+
         //update server Gallery using the updated imageItem.likes
-        axios.put(`/gallery/like/${imageItem.id}`, imageItem).then((response) => {
+        axios.put(`/gallery/like/${props.galleryItem.id}`, props.galleryItem).then((response) => {
             console.log(response);
             props.getItems();
         }).catch((err) => {
@@ -43,12 +33,12 @@ function GalleryItem(props) {
             <div>
                 {imageDisplay ?
 
-                    <img class=" img-fluid rounded " onClick={changeImageDisplay} src={imageItem.path} /> :
-                    <p onClick={changeImageDisplay} > {imageItem.description}</p>}
+                    <img class=" img-fluid rounded " onClick={changeImageDisplay} src={props.galleryItem.path} /> :
+                    <p onClick={changeImageDisplay} > {props.galleryItem.description}</p>}
 
                 {/* if the like button is clicked, run galleryLikes */}
                 <div>
-                    <button class="btn btn-light" onClick={galleryLikes}>{imageItem.likes}  &#9825;</button>
+                    <button class="btn btn-light" onClick={galleryLikes}>{props.galleryItem.likes}  &#9825;</button>
                     {/* <button onClick={deleteItem}>delete</button> */}
                 </div>
                 <br />
