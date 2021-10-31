@@ -33,7 +33,7 @@ function App() {
       </header>
       <div>
         {/* pass down items and getitems function via props */}
-        <Form />
+        <Form get={getItems} />
         <GalleryList taco={items} get={getItems} />
       </div>
     </div>

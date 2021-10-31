@@ -1,10 +1,12 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Form(props) {
     // const [name, setName]=useState(null);
     const [newImage, setNewImage] = useState({
         path: '',
         description: '',
+        likes: 0
     });
 
     const handlePathChange = (event) => {
@@ -22,6 +24,12 @@ function Form(props) {
     }
     const handleSubmit = () => {
         console.log(newImage);
+        axios.post(`/gallery`, newImage).then((response) => {
+            console.log(response);
+            props.getItems();
+        }).catch((err) => {
+            console.log(err);
+        })
     }
 
     return (
@@ -32,7 +40,8 @@ function Form(props) {
                 <input type="text" placeholder="alt-text" onChange={(event) => handleDescriptionChange(event)} />
                 <button onClick={handleSubmit}>Submit Image</button>
             </span>
-            <p>props: {JSON.stringify(props)}</p>
+            <br />
+            {/* <p>props: {JSON.stringify(props)}</p> */}
         </div >
     )
 

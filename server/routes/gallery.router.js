@@ -5,25 +5,25 @@ const router = express.Router();
 // modules
 const pool = require('../modules/pool');
 
-// DO NOT MODIFY THIS FILE FOR BASE MODE
-
-// PUT Route
-// router.put('/like/:id', (req, res) => {
-//     console.log(req.params);
-//     const galleryId = req.params.id;
-//     for (const galleryItem of galleryItems) {
-//         if (galleryItem.id == galleryId) {
-//             galleryItem.likes += 1;
-//         }
-//     }
-//     res.sendStatus(200);
-// }); // END PUT Route
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
     console.log(req.params);
     let queryString = `UPDATE "gallery_items" SET likes ='${req.body.likes}' WHERE id=${req.params.id};`;
     pool.query(queryString).then((results) => {
+        res.sendStatus(200);
+    }).catch((results) => {
+        console.log('error in PUT');
+        res.sendStatus(500);
+    })
+});// END PUT Route
+
+//POST Route
+router.post('/', (req, res) => {
+    console.log(req.body);
+    let queryString = 'INSERT INTO "gallery_items" (path, description, likes) VALUES($1, $2, $3)';
+    let values = [req.body.path, req.body.description, req.body.likes];
+    pool.query(queryString, values).then((results) => {
         res.sendStatus(200);
     }).catch((results) => {
         console.log('error in PUT');
